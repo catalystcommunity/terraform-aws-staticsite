@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.0.0...v1.0.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* add a configuration for hosted zone override ([#2](https://github.com/catalystsquad/terraform-aws-staticsite/issues/2)) ([df480c3](https://github.com/catalystsquad/terraform-aws-staticsite/commit/df480c3fdc785b4bd084bb77b4f57d145893dcba))
+
 # 1.0.0 (2023-07-26)
 
 
