@@ -106,8 +106,8 @@ module "static-site" {
 | <a name="input_cloudfront_ssl_support_method"></a> [cloudfront\_ssl\_support\_method](#input\_cloudfront\_ssl\_support\_method) | The SSL support method for the CloudFront distribution | `string` | `"sni-only"` | no |
 | <a name="input_cloudfront_wait_for_deployment"></a> [cloudfront\_wait\_for\_deployment](#input\_cloudfront\_wait\_for\_deployment) | Whether to wait for the CloudFront distribution to be deployed | `bool` | `false` | no |
 | <a name="input_create_acm_certificate"></a> [create\_acm\_certificate](#input\_create\_acm\_certificate) | Whether to enable creation of an ACM certificate | `bool` | `true` | no |
-| <a name="input_create_hosted_zone"></a> [create\_hosted\_zone](#input\_create\_hosted\_zone) | Whether to enable creation of a Route53 hosted zone | `bool` | `true` | no |
-| <a name="input_create_site_records"></a> [create\_site\_records](#input\_create\_site\_records) | Whether to enable creation of a Route53 hosted zone | `bool` | `true` | no |
+| <a name="input_create_hosted_zone"></a> [create\_hosted\_zone](#input\_create\_hosted\_zone) | Whether to enable creation of a Route53 hosted zone. By default it assumes the hosted zone already exists | `bool` | `false` | no |
+| <a name="input_create_site_records"></a> [create\_site\_records](#input\_create\_site\_records) | Whether to enable creation of the Route53 records for the website | `bool` | `true` | no |
 | <a name="input_enable_access_log_bucket"></a> [enable\_access\_log\_bucket](#input\_enable\_access\_log\_bucket) | Whether to enable access logging for the bucket | `bool` | `false` | no |
 | <a name="input_enable_cloudfront_invalidation"></a> [enable\_cloudfront\_invalidation](#input\_enable\_cloudfront\_invalidation) | Whether to enable automatic CloudFront invalidation on file uploads | `bool` | `false` | no |
 | <a name="input_extra_cloudfront_aliases"></a> [extra\_cloudfront\_aliases](#input\_extra\_cloudfront\_aliases) | Extra CloudFront aliases to add to the distribution | `list(string)` | `[]` | no |
