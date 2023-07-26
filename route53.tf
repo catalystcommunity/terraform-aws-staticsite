@@ -1,13 +1,17 @@
+locals {
+  hosted_zone_name = var.hosted_zone_name != "" ? var.hosted_zone_name : var.website_domain
+}
+
 data "aws_route53_zone" "hosted_zone" {
   count    = (!var.create_hosted_zone && (var.create_acm_certificate || var.create_site_records)) ? 1 : 0
   provider = aws.main
-  name     = var.website_domain
+  name     = local.hosted_zone_name
 }
 
 resource "aws_route53_zone" "hosted_zone" {
   count    = (var.create_hosted_zone && (var.create_acm_certificate || var.create_site_records)) ? 1 : 0
   provider = aws.main
-  name     = var.website_domain
+  name     = local.hosted_zone_name
   tags     = var.tags
 }
 
