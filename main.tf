@@ -67,7 +67,8 @@ resource "aws_s3_bucket_logging" "website" {
 }
 
 locals {
-  cloudfront_aliases = flatten([[var.website_domain], var.extra_cloudfront_aliases])
+  cloudfront_aliases  = flatten([[var.website_domain], var.extra_cloudfront_aliases])
+  acm_certificate_arn = var.create_acm_certificate ? aws_acm_certificate.cert[0].arn : var.acm_certificate_arn
 }
 
 resource "aws_cloudfront_distribution" "website" {
@@ -109,7 +110,7 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   viewer_certificate {
-    acm_certificate_arn            = var.acm_certificate_arn
+    acm_certificate_arn            = local.acm_certificate_arn
     cloudfront_default_certificate = false
     minimum_protocol_version       = var.cloudfront_minimum_protocol_version
     ssl_support_method             = var.cloudfront_ssl_support_method
