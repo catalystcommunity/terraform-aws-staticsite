@@ -111,6 +111,7 @@ module "static-site" {
 | <a name="input_enable_access_log_bucket"></a> [enable\_access\_log\_bucket](#input\_enable\_access\_log\_bucket) | Whether to enable access logging for the bucket | `bool` | `false` | no |
 | <a name="input_enable_cloudfront_invalidation"></a> [enable\_cloudfront\_invalidation](#input\_enable\_cloudfront\_invalidation) | Whether to enable automatic CloudFront invalidation on file uploads | `bool` | `false` | no |
 | <a name="input_extra_cloudfront_aliases"></a> [extra\_cloudfront\_aliases](#input\_extra\_cloudfront\_aliases) | Extra CloudFront aliases to add to the distribution | `list(string)` | `[]` | no |
+| <a name="input_hosted_zone_name"></a> [hosted\_zone\_name](#input\_hosted\_zone\_name) | The name of the Route53 hosted zone to create or find | `string` | `""` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_website_content_filepath"></a> [website\_content\_filepath](#input\_website\_content\_filepath) | The file paths for all files to upload to the website. Enables management of the website content | `string` | `""` | no |
 | <a name="input_website_domain"></a> [website\_domain](#input\_website\_domain) | The domain of the website to create | `string` | n/a | yes |

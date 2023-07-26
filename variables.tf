@@ -160,6 +160,12 @@ variable "create_hosted_zone" {
   default     = false
 }
 
+variable "hosted_zone_name" {
+  description = "The name of the Route53 hosted zone to create or find"
+  type        = string
+  default     = ""
+}
+
 variable "create_site_records" {
   description = "Whether to enable creation of the Route53 records for the website"
   type        = bool
