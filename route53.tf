@@ -16,7 +16,11 @@ resource "aws_route53_zone" "hosted_zone" {
 }
 
 locals {
-  hosted_zone_id = var.create_hosted_zone ? aws_route53_zone.hosted_zone[0].id : data.aws_route53_zone.hosted_zone[0].id
+  existing_hosted_zone_id = (
+    (!var.create_hosted_zone && !var.create_acm_certificate && !var.create_site_records) ?
+    "" : data.aws_route53_zone.hosted_zone[0].id
+  )
+  hosted_zone_id = var.create_hosted_zone ? aws_route53_zone.hosted_zone[0].id : local.existing_hosted_zone_id
 
   dns_records = concat([var.website_domain], var.extra_cloudfront_aliases)
   dns_records_to_create = var.create_site_records ? {
