@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.0.1...v1.0.2) (2023-07-28)
+
+
+### Bug Fixes
+
+* index error when supplying disabling route53 management ([#3](https://github.com/catalystsquad/terraform-aws-staticsite/issues/3)) ([41f9fa4](https://github.com/catalystsquad/terraform-aws-staticsite/commit/41f9fa44e57268d23d03fb2aaf9036b63feea3af))
+
 ## [1.0.1](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.0.0...v1.0.1) (2023-07-26)
 
 
