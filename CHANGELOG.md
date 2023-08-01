@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.0.2...v1.1.0) (2023-08-01)
+
+
+### Features
+
+* change s3 access from OAI to OAC ([#4](https://github.com/catalystsquad/terraform-aws-staticsite/issues/4)) ([03413d9](https://github.com/catalystsquad/terraform-aws-staticsite/commit/03413d96a41d77cb85bdfbef4a0770e71057038e))
+
 ## [1.0.2](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.0.1...v1.0.2) (2023-07-28)
 
 
