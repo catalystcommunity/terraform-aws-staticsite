@@ -1,15 +1,18 @@
 data "aws_caller_identity" "current" {}
 
-resource "aws_cloudfront_origin_access_identity" "website" {
-  provider = aws.main
-  comment  = "OAI to restrict access to AWS S3 content"
-}
-
 resource "aws_s3_bucket" "website" {
   provider      = aws.main
   bucket        = var.bucket_name
   force_destroy = var.bucket_force_destroy
   tags          = var.tags
+}
+
+resource "aws_cloudfront_origin_access_control" "website" {
+  provider                          = aws.main
+  name                              = var.website_domain
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 data "aws_iam_policy_document" "cloudfront_bucket_access" {
@@ -19,8 +22,13 @@ data "aws_iam_policy_document" "cloudfront_bucket_access" {
       "s3:GetObject",
     ]
     principals {
-      type        = "AWS"
-      identifiers = [aws_cloudfront_origin_access_identity.website.iam_arn]
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+    condition {
+      test     = "StringEquals"
+      variable = "aws:SourceArn"
+      values   = [aws_cloudfront_distribution.website.arn]
     }
     resources = [
       "${aws_s3_bucket.website.arn}/*",
@@ -82,12 +90,9 @@ resource "aws_cloudfront_distribution" "website" {
   tags                = var.tags
 
   origin {
-    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
-    origin_id   = var.website_domain
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.website.cloudfront_access_identity_path
-    }
+    domain_name              = aws_s3_bucket.website.bucket_regional_domain_name
+    origin_id                = var.website_domain
+    origin_access_control_id = aws_cloudfront_origin_access_control.website.id
   }
 
   default_cache_behavior {
