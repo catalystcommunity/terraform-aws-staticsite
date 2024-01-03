@@ -4,7 +4,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = "~> 5.0"
       configuration_aliases = [
         aws.main,
         aws.acm, # must be in us-east-1, required for ACM certificates
