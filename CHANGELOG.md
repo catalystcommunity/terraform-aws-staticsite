@@ -1,3 +1,5 @@
+# [2.0.0](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.1.0...v2.0.0) (2024-01-03)
+
 # [1.1.0](https://github.com/catalystsquad/terraform-aws-staticsite/compare/v1.0.2...v1.1.0) (2023-08-01)
 
 
