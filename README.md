@@ -25,7 +25,7 @@ provider "aws" {
 }
 
 module "static-site" {
-  source = "github.com/catalystsquad/terraform-aws-staticsite"
+  source = "github.com/catalystcommunity/terraform-aws-staticsite"
 
   # required arguments
   website_domain = "example.com"
@@ -63,7 +63,7 @@ provider "aws" {
 }
 
 module "static-site" {
-  source = "github.com/catalystsquad/terraform-aws-staticsite"
+  source = "github.com/catalystcommunity/terraform-aws-staticsite"
   
   enable_cloudfront_invalidation = true
   cloudfront_invalidation_environment = {
